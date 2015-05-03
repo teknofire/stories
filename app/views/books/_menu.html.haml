@@ -1,0 +1,12 @@
+.panel.panel-default
+  .panel-heading
+    %h1.panel-title Menu
+  .panel-body
+    = search_form_for @q do |f|
+      .input-group
+        = f.input :title_or_description_cont, label: false, placeholder: 'Search books...'
+        %span.input-group-btn= f.button :submit, 'Search', class: 'btn btn-primary'
+  - if can? :manage, Book
+    .panel-footer
+      = link_to new_book_path, class: 'btn btn-success btn-block' do
+        New Book

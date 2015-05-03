@@ -1,0 +1,6 @@
+= simple_form_for(@chapter) do |f|
+  = f.input :title
+  = f.input :description
+  = f.association :book, collection: current_user.books.order(title: :asc), prompt: "Select a book"
+  .text-right
+    = f.button :submit, class: 'btn btn-primary'

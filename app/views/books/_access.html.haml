@@ -1,0 +1,7 @@
+- if can?(:manage, book)
+  - if book.public?
+    %span.label.label-success
+      Public
+  - else
+    %span.label.label-warning
+      Private

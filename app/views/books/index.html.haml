@@ -1,0 +1,26 @@
+.row
+  .col-sm-3
+    = render 'menu'
+  .col-sm-9
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title Listing Books
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Name
+            %th.text-right # of Chapters
+            %th.text-right Owner
+            %th.text-right Updated
+            - if can? :manage, Book
+              %th.text-right Access
+        %tbody
+          - @books.each do |book|
+            %tr
+              %td= link_to book.title, book
+              %td.text-right= book.chapters.count
+              %td.text-right= book.user.name
+              %td.text-right= book.updated_at.strftime('%F')
+              - if can? :manage, Book
+                %td.text-right
+                  = render 'access', book: book

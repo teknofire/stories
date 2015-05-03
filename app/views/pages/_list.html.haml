@@ -1,0 +1,21 @@
+-# .pages.text-center
+-#   = render pages
+
+#pages-carousel.carousel.slide{ data: { ride: 'carousel', wrap: 'false', interval: 'false' } }
+  -# %ol.carousel-indicators
+  -#   - pages.count.times do |i|
+  -#     %li{ class: (i==0 ? 'active' : ''), data: { target: '#pages-carousel', 'slide-to' => i }}
+  .carousel-inner
+    - pages.each do |page|
+      .item{ class: pages.first == page ? 'active' : '' }
+        = image_tag attachment_url(page, :image, :fill, 800, 600, format: "jpg")
+        - unless page.content.blank?
+          .carousel-caption
+            :markdown
+              #{page.content}
+  %a.left.carousel-control{ href:'#pages-carousel', data: { slide: 'prev' }}
+    %span.glyphicon.glyphicon-chevron-left
+    %span.sr-only Previous
+  %a.right.carousel-control{ href:'#pages-carousel', data: { slide: 'next' }}
+    %span.glyphicon.glyphicon-chevron-right
+    %span.sr-only Next

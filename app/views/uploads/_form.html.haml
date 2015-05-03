@@ -1,0 +1,19 @@
+= simple_form_for(@upload) do |f|
+  .row
+    .col-sm-7
+      -# .fileinput.fileinput-new.input-group{ data: { provides: 'fileinput' } }
+      -#   .form-control{ data: { trigger: 'fileinput' } }
+      -#     %i.glyphicon.glyphicon-file.fileinput-exists
+      -#     %span.fileinput-filename Select a file to upload
+      -#   %span.input-group-addon.btn.btn-default.btn-file
+      -#     %span.fileinput-new Select file
+      -#     %span.fileinput-exists Change
+      = f.attachment_field :file, direct: true, presigned: true
+      -# %a.input-group-addon.btn.btn-default.fileinput-exists{ href: '#', data: { dismiss: 'fileinput'} }
+      -#   Remove
+    .col-sm-4
+      .progress.hidden
+        .progress-bar.progress-bar-striped.active{ style: 'width:100%;' }
+          Uploading file
+    .col-sm-1
+      = f.button :submit, 'Import!', class: 'btn btn-info btn-block'

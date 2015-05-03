@@ -1,0 +1,5 @@
+export GOOGLE_CLIENT_ID=30675285723-k86hua8h6vn31ols2d7ncstvro3u0odk.apps.googleusercontent.com
+export GOOGLE_CLIENT_SECRET=E6byAgmKSWfag19715J-OnzG
+export RANSACK_FORM_BUILDER="::SimpleForm::FormBuilder"
+export AWS_CLIENT_ID=AKIAIDUM6U3EM7MN5GKQ
+export AWS_CLIENT_SECRET=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

@@ -1,0 +1,12 @@
+.row
+  .col-sm-3
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title Menu
+      .panel-body
+        = link_to 'Back', @chapter, class: 'btn btn-default btn-block'
+        = link_to 'Show', @chapter, class: 'btn btn-info btn-block'
+
+  .col-sm-9
+    %h1 Editing Chapter
+    = render 'form'

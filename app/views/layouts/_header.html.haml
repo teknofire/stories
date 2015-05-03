@@ -1,0 +1,22 @@
+%nav.navbar.navbar-default.navbar-static-top
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{ type: 'button', data: { toggle: 'collapse', target: '#navbar' }}
+        %span.sr-only Toggle Navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to 'Story Time!', root_url, class: 'navbar-brand'
+    #navbar.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          = link_to 'Books', books_path
+        - if can? :manage, Upload
+          %li
+            = link_to 'Uploads', uploads_path
+        - if signed_in?
+          %li
+            = link_to 'Sign out', signout_path
+        - else
+          %li
+            = link_to 'Sign in', signin_path

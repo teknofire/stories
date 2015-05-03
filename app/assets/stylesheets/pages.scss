@@ -1,0 +1,35 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.page {
+  max-width: 600px;
+  text-align: left;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#pages-carousel {
+  width: 800px;
+  display: inline-block;
+  
+  .carousel-caption {
+    bottom: 0px;
+    width: 100%;
+    left: 0px;
+    right: 0px;
+    padding: 10px 20px;
+    vertical-align: bottom;
+    margin: 0;
+    font-size:1.2em;
+    text-align: left;
+    background-color: rgba(100,100,100, 0.5);
+    text-shadow: 2px 2px 4px #000;
+    font-family: 'Times New Roman'
+
+  }
+
+  .carousel-caption p:last-child {
+    margin-bottom: 0px;
+  }
+}

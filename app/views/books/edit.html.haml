@@ -1,0 +1,10 @@
+.row
+  .col-sm-3
+    .panel.panel-default
+      .panel-header
+        %h1.panel-title Menu
+      .panel-body
+        = link_to 'Back to book', @book, class: 'btn btn-primary btn-block'
+  .col-sm-9
+    %h1 Editing Book
+    = render 'form'

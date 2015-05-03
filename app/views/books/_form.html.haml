@@ -1,0 +1,6 @@
+= simple_form_for(@book) do |f|
+  = f.input :title
+  = f.input :description
+  = f.input :public
+  .text-right
+    = f.button :submit, class: 'btn btn-primary'

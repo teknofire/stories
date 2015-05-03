@@ -1,0 +1,25 @@
+.row
+  .col-sm-3
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title
+          Chapter: #{@chapter.title || @chapter.story_filename}
+      .panel-body
+        :markdown
+          #{@chapter.description}
+        %p
+          %strong # of Pages:
+          = @chapter.pages.count
+      .panel-footer
+        - if @chapter.upload.present?
+          = link_to 'Back to upload', @chapter.upload, class: 'btn btn-default btn-block'
+        - if @chapter.book.present?
+          = link_to 'Back to book', @chapter.book, class: 'btn btn-default btn-block'
+        - if can? :manage, @chapter
+          = link_to 'Edit chapter', edit_chapter_path(@chapter), class: 'btn btn-primary btn-block'
+          = link_to 'Delete chaper', @chapter, method: :delete, class: 'btn btn-danger btn-block', data: { confirm: 'Are you sure?' }
+  .col-sm-9.text-center
+    - if @chapter.book.nil?
+      .alert.alert-info
+        This chapter has not been assigned to a book yet, please edit the chapter and select a book.
+    = render 'pages/list', pages: @chapter.pages.order(sequence: :asc)

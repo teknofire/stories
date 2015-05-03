@@ -1,0 +1,22 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th Title
+      %th.text-right Pages
+      %th.text-right Updated
+      - if can?(:manage, chapters.first)
+        %th.text-right Reorder
+  %tbody
+    - chapters.each do |chapter|
+      %tr
+        %td
+          = link_to chapter do
+            = !chapter.title.blank? ? chapter.title : chapter.story_filename
+        %td.text-right= chapter.pages.count
+        %td.text-right= chapter.updated_at.strftime('%F')
+        - if can? :manage, chapter
+          %td.text-right
+            = link_to [:up, chapter], method: :patch do
+              %i.glyphicon.glyphicon-arrow-up
+            = link_to [:down, chapter], method: :patch do
+              %i.glyphicon.glyphicon-arrow-down
