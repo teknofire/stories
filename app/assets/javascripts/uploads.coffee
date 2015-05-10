@@ -8,7 +8,7 @@ $(document).on "upload:start", "form", (e) ->
 
 $(document).on "upload:complete", "form", (e) ->
   if !$(this).find("input.uploading").length
-    $(this).find("input[type=submit]").removeAttr("disabled")
+    $(this).find("input[type=submit]").removeAttr("disabled").removeClass("disabled")
     $(this).find('.progress').addClass('hidden')
 
 $(document).on "upload:progress", "form", (e) ->
