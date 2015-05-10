@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'dotenv'
 gem 'haml'
 gem 'redcarpet'
 gem 'simple_form'
@@ -71,4 +72,3 @@ end
 gem 'puma'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
-gem 'dotenv'
