@@ -43,6 +43,7 @@ gem 'sidekiq'
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
   gem 'rails-assets-jasny-bootstrap'
+  gem 'rails-assets-fontawesome'
 end
 
 # Use ActiveModel has_secure_password

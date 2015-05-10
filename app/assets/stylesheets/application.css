@@ -12,6 +12,7 @@
  *
  *= require bootstrap
  *= require jasny-bootstrap
+ *= require fontawesome
  *= require_tree .
  *= require_self
  */
