@@ -1,6 +1,6 @@
 = simple_form_for(@upload) do |f|
   .row
-    .col-sm-7
+    .col-sm-6
       -# .fileinput.fileinput-new.input-group{ data: { provides: 'fileinput' } }
       -#   .form-control{ data: { trigger: 'fileinput' } }
       -#     %i.glyphicon.glyphicon-file.fileinput-exists
@@ -15,5 +15,5 @@
       .progress.hidden
         .progress-bar.progress-bar-striped.active{ style: 'width:100%;' }
           Uploading file
-    .col-sm-1
-      = f.button :submit, 'Import!', class: 'btn btn-info btn-block'
+    .col-sm-2
+      = f.button :submit, 'Import!', class: 'btn btn-info btn-block disabled'
