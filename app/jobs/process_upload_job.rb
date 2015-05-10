@@ -27,6 +27,10 @@ class ProcessUploadJob < ActiveJob::Base
       end
     end
     upload.update_attribute(:status, 'Imported')
+  rescue => e
+    logger.error error.message
+    logger.error error.backtrace
+    upload.update_attribute(:status, 'Error')
   end
 
   def import_chapters(upload, path)

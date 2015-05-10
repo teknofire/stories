@@ -12,7 +12,7 @@
 #pages-carousel {
   width: 800px;
   display: inline-block;
-  
+
   .carousel-caption {
     bottom: 0px;
     width: 100%;
@@ -31,5 +31,20 @@
 
   .carousel-caption p:last-child {
     margin-bottom: 0px;
+  }
+  .carousel-control .fa-chevron-left {
+    left: 10px;
+  }
+  .carousel-control .fa-chevron-right {
+    right: 10px;
+  }
+
+  .carousel-control .fa-chevron-left, .carousel-control .fa-chevron-right {
+    margin-top: -1em;
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: inline-block;
+    font-size: 1.5em;
   }
 }
