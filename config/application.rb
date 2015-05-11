@@ -31,7 +31,7 @@ module Stories
 
     config.middleware.insert_before 0, "Rack::Cors", :debug => true, :logger => (-> { Rails.logger }) do
       allow do
-        origins /(teknofire\.net|xip.io)/
+        origins '*'
 
         resource '*',
           :headers => :any,
