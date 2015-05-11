@@ -8,6 +8,6 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
   def login_user(user)
-    session[:user_gid] = user.to_global_id.to_s
+    session[:user_gid] = user.try(:to_global_id).try(:to_s)
   end
 end

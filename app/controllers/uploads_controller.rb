@@ -1,6 +1,7 @@
 class UploadsController < ApplicationController
   before_action :set_upload, only: [:show, :edit, :update, :destroy]
-
+  authorize_resource
+  
   def index
     @uploads = user_uploads
     @upload = current_user.uploads.build

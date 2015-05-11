@@ -9,6 +9,12 @@ class UploadsControllerTest < ActionController::TestCase
     @upload = uploads(:one)
   end
 
+  test "should not be able to see uploads" do
+    login_user(nil)
+    get :index
+    assert_response :redirect
+  end
+
   test "should create upload" do
     assert_difference('Upload.count') do
       post :create, upload: { file: 'test' }
