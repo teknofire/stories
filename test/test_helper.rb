@@ -7,4 +7,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def login_user(user)
+    session[:user_gid] = user.to_global_id.to_s
+  end
 end

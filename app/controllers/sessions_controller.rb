@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
 
 
   def signin_user(user)
-    session[:user_gid] = user.to_global_id.to_s
+    current_user = user
   end
 
   def signout

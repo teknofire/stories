@@ -20,7 +20,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :signed_in?
 
   def current_user=(user)
-    @current_user = user
+    session[:user_gid] = user.to_global_id.to_s
+    # @current_user = user
   end
 
   def redirect_back_or_default(path)

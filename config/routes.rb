@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users
+
   get '/auth/:provider/callback' => 'sessions#create'
   post '/auth/:provider/callback' => 'sessions#create'
   get '/auth/failure' => 'sessions#failure'

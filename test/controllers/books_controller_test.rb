@@ -2,6 +2,7 @@ require 'test_helper'
 
 class BooksControllerTest < ActionController::TestCase
   setup do
+    login_user(users(:one))
     @book = books(:one)
   end
 

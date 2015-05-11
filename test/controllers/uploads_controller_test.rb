@@ -5,6 +5,7 @@ class UploadsControllerTest < ActionController::TestCase
   #   assert true
   # end
   setup do
+    login_user(users(:one))
     @upload = uploads(:one)
   end
 

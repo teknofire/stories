@@ -6,12 +6,16 @@ class Ability
     #
     user ||= User.new # guest user (not logged in)
 
-    can :read, :all
+    can :read, [Book, Chapter, Page]
 
-    unless user.new_record?
+    if user.admin?
+      can :manage, User
       can :manage, [Book, Upload], user_id: user.id
       can :manage, Chapter do |chapter|
         chapter.book.try(:user) == user || chapter.upload.try(:user) == user
+      end
+      can :manage, Page do |page|
+        page.chapter.try(:book).try(:user) == user || page
       end
     end
 

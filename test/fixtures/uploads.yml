@@ -4,8 +4,10 @@ one:
   file_id: MyString
   file_size: 1
   file_content_type: MyString
+  user: one
 
 two:
   file_id: MyString2
   file_size: 1
   file_content_type: MyString
+  user: one
