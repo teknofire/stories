@@ -29,7 +29,7 @@ module Stories
 
     config.active_job.queue_adapter = :sidekiq
 
-    config.middleware.insert_before 0, "Rack::Cors", :debug => true, :logger => (-> { Rails.logger }) do
+    config.middleware.insert_before "ActionDispatch::Static", "Rack::Cors", :debug => true, :logger => (-> { Rails.logger }) do
       allow do
         origins '*'
 
