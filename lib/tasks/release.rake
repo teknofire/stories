@@ -6,6 +6,6 @@ namespace :release do
     version = ENV['version']
 
     puts "Bumping version to #{version}"
-    `set -x && echo #{version} > VERSION && git add VERSION && git commit -m 'bumping version to #{version}' && git tag #{version}`
+    `set -x && echo #{version} > VERSION && git add VERSION && git commit -m 'bumping version to #{version}' && git tag #{version} && git push --tags`
   end
 end
