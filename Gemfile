@@ -31,7 +31,6 @@ gem 'redcarpet'
 gem 'simple_form'
 gem "mini_magick"
 gem "refile", require: ["refile/rails", "refile/image_processing"]
-gem 'quiet_assets'
 gem 'mixlib-shellout'
 gem 'nokogiri'
 gem 'acts_as_list'
@@ -69,6 +68,7 @@ group :development, :test do
   gem 'guard'
   gem 'guard-minitest'
   gem 'terminal-notifier-guard'
+  gem 'quiet_assets'
 end
 
 gem 'puma'
