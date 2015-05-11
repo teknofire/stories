@@ -37,8 +37,10 @@ class Chapter < ActiveRecord::Base
       page.title = data[:title]
       page.content = data[:content]
       page.sequence = count
-      page.image = File.open(data[:image_filename], 'rb')
-      page.image.read
+      if File.exists?(data[:image_filename])
+        page.image = File.open(data[:image_filename], 'rb')
+        page.image.read
+      end
       page.seen = true
       page.save
       count += 1
