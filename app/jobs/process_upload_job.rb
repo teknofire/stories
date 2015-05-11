@@ -28,8 +28,8 @@ class ProcessUploadJob < ActiveJob::Base
     end
     upload.update_attribute(:status, 'Imported')
   rescue => e
-    logger.error error.message
-    logger.error error.backtrace
+    logger.error e.message
+    logger.error e.backtrace
     upload.update_attribute(:status, 'Error')
   end
 
