@@ -5,8 +5,11 @@
         %h1.panel-title Menu
       .panel-body
         = link_to 'Back', @chapter, class: 'btn btn-default btn-block'
-        = link_to 'Show', @chapter, class: 'btn btn-info btn-block'
+        = link_to 'Delete', @chapter, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block'
 
   .col-sm-9
-    %h1 Editing Chapter
-    = render 'form'
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title Editing Chapter
+      .panel-body
+        = render 'form'

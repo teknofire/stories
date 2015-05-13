@@ -1,28 +1,6 @@
 .row
   .col-sm-3
-    .panel.panel-default
-      .panel-heading
-        %h1.panel-title
-          Book: #{@book.title}
-          = render 'access', book: @book
-
-      .panel-body
-        :markdown
-          #{@book.description}
-
-        %p
-          %strong Created:
-          = @book.created_at.strftime('%F')
-        %p
-          %strong Updated:
-          = @book.updated_at.strftime('%F')
-      .panel-footer
-        = link_to 'Back to book list', books_path, class: 'btn btn-default btn-block'
-        - if can? :manage, @book
-          = link_to 'Edit book', edit_book_path(@book), class: 'btn btn-primary btn-block'
-          = link_to 'Delete book', @book, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block'
-  .col-sm-9
-    .panel.panel-default
-      .panel-heading
-        %h1.panel-title Chapters
-      = render 'chapters/list', chapters: @book.chapters
+    = render @book
+    = render 'chapters/menu_list', chapters: @book.chapters, active_chapter: @book.chapters.first
+  .col-sm-9.text-center
+    = render @book.chapters.first

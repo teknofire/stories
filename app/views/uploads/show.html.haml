@@ -18,4 +18,7 @@
         = link_to 'Back to uploads', uploads_path, class: 'btn btn-default btn-block'
         = link_to 'Delete', @upload, method: :delete, class: 'btn btn-danger btn-block', data: { confirm: 'Are you sure?' }
   .col-sm-9
-    = render @upload
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title Unassigned Chapters
+      = render 'chapters/list', chapters: @upload.chapters

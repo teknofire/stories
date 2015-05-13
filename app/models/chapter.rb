@@ -20,6 +20,10 @@ class Chapter < ActiveRecord::Base
     self.upload_id = nil unless book.nil?
   end
 
+  def to_s
+    !title.blank? ? title : story_filename
+  end
+
   def story_xml
     @story_xml ||= Nokogiri::XML(story.read)
   end

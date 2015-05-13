@@ -1,4 +1,6 @@
 .panel.panel-default
   .panel-heading
-    %h1.panel-title Unassigned Chapters
-  = render 'chapters/list', chapters: @upload.chapters
+    %h1.panel-title Upload
+  .panel-body
+    = link_to upload, class: 'btn btn-default btn-block' do
+      Back to upload

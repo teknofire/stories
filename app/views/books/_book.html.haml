@@ -1,0 +1,18 @@
+.panel.panel-default
+  .panel-heading
+    %h1.panel-title
+      Book: #{book.title}
+      = render 'books/access', book: book
+
+  .panel-body
+    :markdown
+      #{book.description}
+
+  .panel-footer
+    = link_to 'Back to book list', books_path, class: 'btn btn-default btn-block'
+    - if can? :manage, book
+      = link_to edit_book_path(book), class: 'btn btn-primary btn-block' do
+        Edit book
+      = link_to edit_chapter_path(@chapter || book.chapters.first), class: 'btn btn-info btn-block' do
+        Edit Chapter
+      = link_to 'Delete book', book, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block'
