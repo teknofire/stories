@@ -1,6 +1,7 @@
-.page.thumbnail
-  - unless page.title.empty?
-    %h1= page.title
-  = image_tag attachment_url(page, :image, format: "jpg")
-  :markdown
-    #{page.content}
+- cache page do
+  .page.thumbnail
+    - unless page.title.empty?
+      %h1= page.title
+    = image_tag attachment_url(page, :image, format: "jpg")
+    :markdown
+      #{page.content}

@@ -3,6 +3,7 @@
     %p This chapter has not been assigned to a book yet, please select a book.
     %br/
     = render 'choose_book_form'
-%h1
-  = chapter.title
-= render 'pages/list', pages: chapter.pages.order(sequence: :asc)
+- cache chapter do
+  %h1
+    = chapter.title
+  = render 'pages/list', pages: chapter.pages.order(sequence: :asc)

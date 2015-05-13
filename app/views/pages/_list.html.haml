@@ -7,12 +7,13 @@
   -#     %li{ class: (i==0 ? 'active' : ''), data: { target: '#pages-carousel', 'slide-to' => i }}
   .carousel-inner
     - pages.each do |page|
-      .item{ class: pages.first == page ? 'active' : '' }
-        = image_tag attachment_url(page, :image, :fill, 800, 600, format: "jpg")
-        - unless page.content.blank?
-          .carousel-caption
-            :markdown
-              #{page.content}
+      - cache page do
+        .item{ class: pages.first == page ? 'active' : '' }
+          = image_tag attachment_url(page, :image, :fill, 800, 600, format: "jpg")
+          - unless page.content.blank?
+            .carousel-caption
+              :markdown
+                #{page.content}
   %a.left.carousel-control{ href:'#pages-carousel', data: { slide: 'prev' }}
     %span.fa.fa-chevron-left
     %span.sr-only Previous

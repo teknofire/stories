@@ -3,4 +3,5 @@
     = render @book
     = render 'chapters/menu_list', chapters: @book.chapters, active_chapter: @book.chapters.first
   .col-sm-9.text-center
-    = render @book.chapters.first
+    - cache @book do
+      = render @book.chapters.first
