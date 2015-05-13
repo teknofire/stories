@@ -21,7 +21,6 @@ class ApplicationController < ActionController::Base
 
   def current_user=(user)
     session[:user_gid] = user.to_global_id.to_s
-    # @current_user = user
   end
 
   def redirect_back_or_default(path)

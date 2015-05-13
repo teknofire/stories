@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
 
 
   def signin_user(user)
-    current_user = user
+    self.current_user = user
   end
 
   def signout
