@@ -1,8 +1,8 @@
 .panel.panel-default
   .panel-heading
+    .pull-right{ style: 'margin-top: -5px;'}= render 'books/access', book: book
     %h1.panel-title
       Book: #{book.title}
-      = render 'books/access', book: book
 
   .panel-body
     :markdown

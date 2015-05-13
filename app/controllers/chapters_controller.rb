@@ -1,6 +1,6 @@
 class ChaptersController < ApplicationController
   authorize_resource
-  
+
   before_action :set_chapter, only: [:show, :edit, :update, :destroy, :up, :down]
 
   # GET /chapters
@@ -16,12 +16,12 @@ class ChaptersController < ApplicationController
 
   def up
     @chapter.move_higher
-    redirect_to @chapter.book
+    redirect_to @chapter
   end
 
   def down
     @chapter.move_lower
-    redirect_to @chapter.book
+    redirect_to @chapter
   end
 
   # GET /chapters/new
