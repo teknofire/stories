@@ -12,6 +12,10 @@ class Chapter < ActiveRecord::Base
 
   before_save :unassign_upload
 
+  def user
+    book.try(:user) || upload.try(:user)
+  end
+
   def should_generate_new_friendly_id?
     !slug? || title_changed?
   end

@@ -9,5 +9,5 @@ class UserTest < ActiveSupport::TestCase
     user = User.new
 
     assert !user.admin?, "New user was set as admin"
-  end
+  end  
 end

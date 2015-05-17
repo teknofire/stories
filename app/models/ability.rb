@@ -10,13 +10,20 @@ class Ability
 
     if user.admin?
       can :manage, User
+    end
+
+    if user.authorized?
       can :manage, [Book, Upload], user_id: user.id
       can :manage, Chapter do |chapter|
-        chapter.book.try(:user) == user || chapter.upload.try(:user) == user
+        chapter.user == user
       end
       can :manage, Page do |page|
-        page.chapter.try(:book).try(:user) == user || page
+        page.chapter.user == user
       end
+    end
+
+    if !user.new_record?
+      can [:update], User, id: user.id
     end
 
     #   if user.admin?

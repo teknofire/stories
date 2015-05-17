@@ -1,0 +1,24 @@
+.row
+  .col-sm-3
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title User menu
+      .panel-body
+        - if current_user.admin? && current_user != @user
+          = link_to [@user, user: { admin: !@user.admin? }], method: :patch, class: 'btn btn-warning btn-block' do
+            Toggle
+            %strong admin
+        = link_to [@user, user: { authorized: !@user.authorized? }], method: :patch, class: 'btn btn-warning btn-block' do
+          Toggle
+          %strong upload authorization
+  .col-sm-9
+    %h1= @user.name
+    %p
+      %strong Email:
+      = @user.email
+    %p
+      %strong Admin?
+      = @user.admin? ? 'Yes' : 'No'
+    %p
+      %strong Authorized to upload?
+      = @user.authorized? ? 'Yes' : 'No'

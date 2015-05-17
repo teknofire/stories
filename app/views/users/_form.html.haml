@@ -1,0 +1,8 @@
+= simple_form_for @user do |f|
+  = f.input :name
+  .form-group
+    %label.control-label Email
+    .form-control-static= @user.email
+  = link_to 'Cancel', root_path, class: 'btn btn-default'
+  .pull-right
+    = f.button :submit, class: 'btn btn-primary'
