@@ -6,7 +6,12 @@ class ApplicationController < ActionController::Base
   protected
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
+    if !signed_in?
+      save_current_location
+      redirect_to signin_path
+    else
+      redirect_to root_url, :alert => exception.message
+    end
   end
 
   def current_user
@@ -23,7 +28,14 @@ class ApplicationController < ActionController::Base
     session[:user_gid] = user.to_global_id.to_s
   end
 
+  def save_current_location
+    session[:saved_location] = request.original_fullpath
+  end
+
   def redirect_back_or_default(path)
-    redirect_to session[:saved_location] || path
+    saved_location = session[:saved_location]
+    session[:saved_location] = nil
+
+    redirect_to saved_location || path
   end
 end

@@ -4,7 +4,9 @@ one:
   name: MyString
   email: MyString
   admin: true
+  authorized: true
 
 two:
   name: MyString
   email: MyString
+  authorized: true

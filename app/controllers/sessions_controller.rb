@@ -12,12 +12,14 @@ class SessionsController < ApplicationController
     end
 
     signin_user(@auth.user)
+    flash[:notice] = "You have been signed in as #{@auth.user.name}"
 
     redirect_back_or_default('/')
   end
 
   def destroy
     signout
+    flash[:notice] = "You have been signed out"
     redirect_back_or_default('/')
   end
 
