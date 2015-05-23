@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def current_theme
-    @current_theme ||= Theme.last
+    @current_theme ||= Theme.where(site: true).first
   end
   helper_method :current_theme
 

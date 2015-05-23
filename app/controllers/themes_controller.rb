@@ -71,6 +71,6 @@ class ThemesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def theme_params
-      params.require(:theme).permit(:title, :background, :navbar, :navbar_font_color, :panel_color)
+      params.require(:theme).permit(:title, :background, :navbar, :navbar_font_color, :panel_color, :site)
     end
 end
