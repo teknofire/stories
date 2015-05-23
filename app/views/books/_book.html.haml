@@ -13,7 +13,7 @@
     - if can? :manage, book
       = link_to edit_book_path(book), class: 'btn btn-primary btn-block' do
         Edit book
-    - if @chapter || book.chapters.any?
-      = link_to edit_chapter_path(@chapter || book.chapters.first), class: 'btn btn-info btn-block' do
-        Edit Chapter
-    = link_to 'Delete book', book, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block'
+      - if @chapter || book.chapters.any?
+        = link_to edit_chapter_path(@chapter || book.chapters.first), class: 'btn btn-info btn-block' do
+          Edit Chapter
+      = link_to 'Delete book', book, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block'
