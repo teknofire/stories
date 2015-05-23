@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def current_theme
+    @current_theme ||= Theme.last
+  end
+  helper_method :current_theme
+
   rescue_from CanCan::AccessDenied do |exception|
     if !signed_in?
       save_current_location

@@ -1,0 +1,84 @@
+:scss
+  $background: #{current_theme.background || '#fff' };
+  $font_color: #000;
+  $navbar_background: #{current_theme.navbar || '#fff' };
+  $navbar_font_color: #{current_theme.navbar_font_color || '#000' };
+
+  $panel_color: #{current_theme.panel_color || '#fafafa'};
+  $panel_header_background: darken($panel_color, 10%);
+  $panel_border_color: darken($panel_color, 20%);
+  $panel_highlight_color: darken($panel_color, 5%);
+
+  html,body {
+    background-color: $background;
+    color: $font_color;
+  }
+
+  .navbar-default {
+    border-color: darken($navbar_background, 10%);
+    background-color: $navbar_background;
+    color: $navbar_font_color;
+
+    $shadow: 1px 1px 2px grayscale(invert($navbar_font_color));
+    .navbar-brand {
+      color: $navbar_font_color;
+      text-shadow: $shadow;
+      font-size: 2em;
+      &:hover {
+        color: $navbar_font_color;
+        text-shadow: $shadow;
+      }
+    }
+
+    .navbar-brand, .navbar-nav > li > a {
+      color: $navbar_font_color;
+      text-shadow: $shadow;
+    }
+
+    .navbar-nav > li > a:hover {
+      color: $navbar_font_color;
+      text-shadow: $shadow;
+      background-color: desaturate($navbar_background, 15%);
+    }
+    .navbar-nav > li > a.active {
+      background-color: desaturate($navbar_background, 10%);
+    }
+  }
+
+  .panel {
+    background-color: $panel_color;
+    border-color: $panel_border_color;
+
+    &.panel-default > .panel-heading, &.panel-default > .panel-footer  {
+      background-color: $panel_header_background;
+      border-color: $panel_border_color;
+    }
+
+    table.table.table-striped { border-color: $panel_border_color; }
+  }
+
+  ul.list-group {
+    li.list-group-item {
+      background-color: $panel_color;
+      border-color: $panel_border_color;
+  }
+    li.list-group-item-info {
+      background-color: $panel_highlight_color;
+      border-color: $panel_border_color;
+    }
+  }
+
+  table.table {
+    border-color: $panel_border_color;
+
+    thead > tr > th {
+      border-color: $panel_border_color;
+    }
+    tbody > tr > td {
+      border-color: $panel_border_color;
+    }
+
+    &.table-striped > tbody > tr:nth-of-type(odd) {
+      background-color: darken($panel_color, 5%);
+    }
+  }

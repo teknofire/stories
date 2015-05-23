@@ -13,6 +13,7 @@
  *= require bootstrap
  *= require jasny-bootstrap
  *= require fontawesome
+ *= require jquery-minicolors
  *= require_tree .
  *= require_self
  */

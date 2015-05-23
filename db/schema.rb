@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150517191839) do
+ActiveRecord::Schema.define(version: 20150523003129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,16 @@ ActiveRecord::Schema.define(version: 20150517191839) do
   end
 
   add_index "pages", ["chapter_id"], name: "index_pages_on_chapter_id", using: :btree
+
+  create_table "themes", force: :cascade do |t|
+    t.string   "title"
+    t.string   "background"
+    t.string   "navbar"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "navbar_font_color"
+    t.string   "panel_color"
+  end
 
   create_table "uploads", force: :cascade do |t|
     t.string   "file_id"

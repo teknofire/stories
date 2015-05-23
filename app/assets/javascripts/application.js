@@ -15,5 +15,6 @@
 //= require bootstrap
 //= require jasny-bootstrap
 //= require refile
+//= require jquery-minicolors
 //= require turbolinks
 //= require_tree .

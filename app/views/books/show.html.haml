@@ -3,5 +3,6 @@
     = render @book
     = render 'chapters/menu_list', chapters: @book.chapters, active_chapter: @book.chapters.first
   .col-sm-9.text-center
-    - cache @book do
-      = render @book.chapters.first
+    - if @book.chapters.any?
+      - cache @book do
+        = render @book.chapters.first

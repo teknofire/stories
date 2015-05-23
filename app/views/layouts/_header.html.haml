@@ -6,7 +6,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to 'Story Time!', root_url, class: 'navbar-brand'
+      = link_to 'Torquaret Storyboards', root_url, class: 'navbar-brand'
     #navbar.collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right
         %li
@@ -20,6 +20,9 @@
         - if can? :manage, User
           %li
             = link_to 'Users', users_path
+        - if can? :manage, Theme
+          %li
+            = link_to 'Themes', themes_path
         - if signed_in?
           %li
             = link_to 'Sign out', signout_path

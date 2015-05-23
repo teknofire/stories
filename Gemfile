@@ -44,6 +44,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
   gem 'rails-assets-jasny-bootstrap'
   gem 'rails-assets-fontawesome'
+  gem 'rails-assets-jquery-minicolors'
 end
 
 # Use ActiveModel has_secure_password

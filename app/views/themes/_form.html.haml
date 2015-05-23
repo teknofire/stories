@@ -1,0 +1,14 @@
+= simple_form_for(@theme) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :title
+  .colors
+    = f.input :background
+    .row
+      .col-sm-6
+        = f.input :navbar
+      .col-sm-6
+        = f.input :navbar_font_color
+    = f.input :panel_color
+  .form-actions.text-right
+    = f.button :submit, class: 'btn btn-primary'

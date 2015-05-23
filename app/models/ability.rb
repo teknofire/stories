@@ -10,6 +10,7 @@ class Ability
 
     if user.admin?
       can :manage, User
+      can :manage, Theme
     end
 
     if user.authorized?

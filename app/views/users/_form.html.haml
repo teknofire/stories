@@ -1,4 +1,6 @@
 = simple_form_for @user do |f|
+  = f.error_notification
+  
   = f.input :name
   .form-group
     %label.control-label Email

@@ -1,0 +1,31 @@
+.row
+  .col-sm-3
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title Menu
+      .panel-body
+        = link_to 'New Theme', new_theme_path, class: 'btn btn-success btn-block'
+
+  .col-sm-9
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title Theme list
+
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Title
+            %th Background
+            %th Navbar
+            %th{:colspan => "3"}
+        %tbody
+          - @themes.each do |theme|
+            %tr
+              %td= theme.title
+              %td= theme.background
+              %td= theme.navbar
+              %td
+                .btn-grp
+                  = link_to 'Show', theme
+                  = link_to 'Edit', edit_theme_path(theme)
+                  = link_to 'Destroy', theme, method: :delete, data: { confirm: 'Are you sure?' }

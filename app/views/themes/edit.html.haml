@@ -1,0 +1,14 @@
+.row
+  .col-sm-3
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title Menu
+      .panel-body
+        = link_to 'Theme list', themes_path, class: 'btn btn-default btn-block'
+
+  .col-sm-9
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title Editing theme
+      .panel-body
+        = render 'form'
