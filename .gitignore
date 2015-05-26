@@ -12,5 +12,6 @@
 !/log/.keep
 /tmp
 
+.sass-cache
 .powenv
 .env
