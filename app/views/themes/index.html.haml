@@ -20,6 +20,6 @@
         %tbody
           - @themes.each do |theme|
             %tr
-              %td= link_to theme.title || theme.id, theme
+              %td= link_to theme, theme
               %td= theme.background
               %td= theme.navbar
