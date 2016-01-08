@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'bundler', '>= 1.8.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.5'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -39,6 +39,7 @@ gem 'cancancan', '~> 1.10'
 gem 'ransack'
 gem "aws-sdk", '< 2'
 gem 'sidekiq'
+gem 'foreman'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
