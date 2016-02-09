@@ -7,7 +7,7 @@ preload_app!
 rackup      DefaultRackup
 port        ENV['PORT']     || 9292
 environment ENV['RAILS_ENV'] || 'development'
-pidfile     ENV['PUMA_PIDFILE'] || '/var/run/puma.pid'
+pidfile     ENV['PUMA_PIDFILE'] || 'tmp/pids/puma.pid'
 
 on_worker_boot do
   # Worker specific setup for Rails 4.1+
