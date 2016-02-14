@@ -1,10 +1,2 @@
-.row
-  .col-sm-3
-    - unless @chapter.book.nil?
-      = render @chapter.book
-    - unless @chapter.upload.nil?
-      = render @chapter.upload
-
-    = render 'chapters/menu_list', chapters: @chapter.try(:book).try(:chapters), active_chapter: @chapter
-  .col-sm-9.text-center
-    = render @chapter
+= render @chapter.book unless @chapter.book.nil?
+= render @chapter

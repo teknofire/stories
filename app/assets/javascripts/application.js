@@ -16,5 +16,7 @@
 //= require jasny-bootstrap
 //= require refile
 //= require jquery-minicolors
+//= require jquery-masonry/dist/masonry.pkgd.js
 //= require turbolinks
+//= require jquery.turbolinks
 //= require_tree .

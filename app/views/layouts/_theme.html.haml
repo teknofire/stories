@@ -23,7 +23,6 @@
     .navbar-brand {
       color: $navbar_font_color;
       text-shadow: $shadow;
-      font-size: 2em;
       &:hover {
         color: $navbar_font_color;
         text-shadow: $shadow;
@@ -41,6 +40,11 @@
       background-color: desaturate($navbar_background, 15%);
     }
     .navbar-nav > li > a.active {
+      background-color: desaturate($navbar_background, 10%);
+    }
+
+    .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+      color: $navbar_font_color;
       background-color: desaturate($navbar_background, 10%);
     }
   }

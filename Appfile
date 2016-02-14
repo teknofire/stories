@@ -1,4 +1,0 @@
-infrastructure "production" {
-    type = "aws"
-    flavor = "vpc-public-private"
-}

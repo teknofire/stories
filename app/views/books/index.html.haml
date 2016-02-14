@@ -1,24 +1,18 @@
-.row
-  .col-sm-3
-    = render 'menu'
-  .col-sm-9
-    .panel.panel-default
-      .panel-heading
-        %h1.panel-title Listing Books
-      %table.table.table-striped
-        %thead
-          %tr
-            %th Name
-            %th.text-right Chapters
-            %th.text-right Updated
-            - if can? :manage, Book
-              %th.text-right Access
-        %tbody
-          - @books.each do |book|
-            %tr
-              %td= link_to book.title, book
-              %td.text-right= book.chapters.count
-              %td.text-right= book.updated_at.strftime('%F')
-              - if can? :manage, Book
-                %td.text-right
-                  = render 'access', book: book
+= search_form_for @q do |f|
+  .row
+    .col-sm-11
+      = f.input :title_or_description_cont, label: false, placeholder: 'Search books...'
+    .col-sm-1
+      = f.button :submit, 'Search', class: 'btn btn-primary btn-block'
+
+
+.grid.books
+  .grid-sizer
+  - @books.each do |book|
+    = link_to book, class: 'thumbnail grid-item' do
+      = image_tag attachment_url(book.pages.first, :image, :fill, 600, 200, format: "jpg")
+      .caption
+        .pull-right
+          Updated #{time_ago_in_words book.updated_at} ago
+        %h3= book.title
+        = book.description

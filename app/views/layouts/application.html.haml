@@ -10,6 +10,8 @@
     = render 'layouts/theme' unless current_theme.nil?
     = render 'layouts/analytics'
     = render 'layouts/header'
+    - if content_for? :navbar
+      .sub-navbar= yield :navbar 
     .container-fluid
       = flash_messages
       = yield

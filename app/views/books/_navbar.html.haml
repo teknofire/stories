@@ -1,0 +1,12 @@
+- content_for :navbar do
+  %nav.navbar.navbar-default.navbar-static-top
+    .container-fluid
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          = link_to edit_book_path(book) do
+            Edit book
+        - if @chapter || book.chapters.any?
+          %li
+            = link_to edit_chapter_path(@chapter || book.chapters.first) do
+              Edit Chapter
+        %li= link_to 'Delete book', book, method: :delete, data: { confirm: 'Are you sure?' }

@@ -1,6 +1,7 @@
 class Book < ActiveRecord::Base
   belongs_to :user
   has_many :chapters, ->{ order(position: :asc) }, dependent: :destroy
+  has_many :pages, through: :chapters
   has_many :uploads, dependent: :destroy
 
   extend FriendlyId

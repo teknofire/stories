@@ -4,6 +4,6 @@
     %br/
     = render 'choose_book_form'
 - cache chapter do
-  %h1
-    = chapter.title
-  = render 'pages/list', pages: chapter.pages.order(sequence: :asc)
+  %h1= chapter.title
+  -# = render 'pages/list', pages: chapter.pages.order(sequence: :asc)
+  = render 'pages/grid', pages: chapter.pages.order(sequence: :asc)
