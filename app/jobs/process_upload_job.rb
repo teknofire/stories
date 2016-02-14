@@ -19,10 +19,12 @@ class ProcessUploadJob < ActiveJob::Base
 
         entries = Dir.entries('.')
 
-        if entries.include?('Storytelling')
-          import_chapters(upload, 'Storytelling')
+        if entries.include?('Storytelling') && has_stories?('Storytelling')
+          import_story_chapters(upload, 'Storytelling')
+        elsif has_stories?('Storytelling')
+          import_story_chapters(upload, '.')
         else
-          import_chapters(upload, '.')
+          import_images_as_chapter(upload, '.')
         end
       end
     end
@@ -31,6 +33,29 @@ class ProcessUploadJob < ActiveJob::Base
     logger.error e.message
     logger.error e.backtrace
     upload.update_attribute(:status, 'Error')
+  end
+
+  def has_stories?(path)
+    Dir.glob(File.join(path, '*.xml')).count > 0
+  end
+
+  def import_images_as_chapter(upload, path)
+    logger.info "Looking for images to make a chapter"
+
+    chapter = upload.chapters.create(title: upload.file_filename)
+
+    count = 0
+    Dir.chdir(path) do
+      Dir.glob('*.png').each do |image|
+        page = chapter.pages.build
+        page.image = File.open(image, 'rb')
+        page.image.read
+        page.sequence = count
+        page.save
+
+        count += 1
+      end
+    end
   end
 
   def import_chapters(upload, path)
