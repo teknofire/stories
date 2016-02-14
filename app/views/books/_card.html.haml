@@ -1,0 +1,11 @@
+.thumbnail
+  = image_tag attachment_url(book.pages.first, :image, :fill, 600, 200, format: "jpg")
+  .caption
+    .pull-right
+      Updated #{time_ago_in_words book.updated_at} ago
+      - if can? :manage, book
+        .badge
+          = book.public? ? 'Public' : 'Private'
+    %h3= book.title
+    :markdown
+      #{book.description}

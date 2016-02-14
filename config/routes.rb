@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   resources :themes
   resources :themes
-  resources :chapters
+  resources :chapters do
+    resources :pages
+  end
   resources :uploads
   resources :books do
+    get :manage, on: :member
     resources :chapters, shallow: true do
       member do
         patch :up

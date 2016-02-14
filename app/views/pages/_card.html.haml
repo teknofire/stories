@@ -1,0 +1,5 @@
+= image_tag attachment_url(page, :image, :fill, 330, 250, format: "jpg")
+- unless page.content.blank?
+  .caption.inline
+    :markdown
+      #{truncate page.content, length: 100}

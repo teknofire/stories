@@ -1,0 +1,17 @@
+.row
+  .col-sm-3
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title= @chapter.title
+      .panel-body
+        Click an image to with the title and description
+      .panel-footer
+        = link_to manage_book_path(@chapter.book), class: 'btn btn-default btn-block' do
+          %i.fa.fa-arrow-left
+          Back to book manager
+  .col-sm-9
+    .grid.pages
+      .grid-sizer
+      - @pages.each do |page|
+        = link_to edit_page_path(page), class: 'thumbnail grid-item' do
+          = render 'card', page: page

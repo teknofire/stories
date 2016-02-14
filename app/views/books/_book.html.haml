@@ -9,6 +9,6 @@
       %ul.nav.navbar-nav.navbar-right
         - if can? :manage, book
           %li
-            = link_to edit_book_path(book), class: 'navbar-link' do
+            = link_to manage_book_path(book), class: 'navbar-link' do
               %i.fa.fa-edit
               Manage book

@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   authorize_resource
 
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :manage]
 
   # GET /books
   # GET /books.json
@@ -20,6 +20,9 @@ class BooksController < ApplicationController
   # GET /books/new
   def new
     @book = current_user.books.build
+  end
+
+  def manage
   end
 
   # GET /books/1/edit

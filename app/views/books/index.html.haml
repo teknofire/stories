@@ -9,13 +9,5 @@
 .grid.books
   .grid-sizer
   - @books.each do |book|
-    = link_to book, class: 'thumbnail grid-item' do
-      = image_tag attachment_url(book.pages.first, :image, :fill, 600, 200, format: "jpg")
-      .caption
-        .pull-right
-          Updated #{time_ago_in_words book.updated_at} ago
-          - if can? :manage, book
-            .badge
-              = book.public? ? 'Public' : 'Private'
-        %h3= book.title
-        = book.description
+    = link_to book, class: 'grid-item' do
+      = render 'card', book: book

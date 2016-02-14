@@ -1,0 +1,13 @@
+= simple_form_for @page do |f|
+  .panel.panel-default
+    .panel-heading
+      %h1.panel-title Page form
+    .panel-body
+      .row
+        .col-sm-4
+          .thumbnail.pull-right= image_tag attachment_url(@page, :image, :fit, 500, 500, format: "jpg")
+        .col-sm-8
+          = f.input :content, input_html: { rows: 14 }
+    .panel-footer
+      .text-right
+        = f.button :submit, class: 'btn btn-primary'

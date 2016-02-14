@@ -3,8 +3,4 @@
   - pages.each do |page|
     - cache page do
       = link_to page, class: 'thumbnail grid-item' do
-        = image_tag attachment_url(page, :image, format: "jpg")
-        - unless page.content.blank?
-          .caption.inline
-            :markdown
-              #{truncate page.content, length: 100}
+        = render 'card', page: page

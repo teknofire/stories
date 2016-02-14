@@ -16,12 +16,12 @@ class ChaptersController < ApplicationController
 
   def up
     @chapter.move_higher
-    redirect_to @chapter
+    redirect_to manage_book_path(@chapter.book)
   end
 
   def down
     @chapter.move_lower
-    redirect_to @chapter
+    redirect_to manage_book_path(@chapter.book)
   end
 
   # GET /chapters/new
@@ -40,7 +40,7 @@ class ChaptersController < ApplicationController
 
     respond_to do |format|
       if @chapter.save
-        format.html { redirect_to @chapter, notice: 'Chapter was successfully created.' }
+        format.html { redirect_to manage_book_path(@chapter.book), notice: 'Chapter was successfully created.' }
         format.json { render :show, status: :created, location: @chapter }
       else
         format.html { render :new }
@@ -54,7 +54,7 @@ class ChaptersController < ApplicationController
   def update
     respond_to do |format|
       if @chapter.update(chapter_params)
-        format.html { redirect_to @chapter, notice: 'Chapter was successfully updated.' }
+        format.html { redirect_to manage_book_path(@chapter.book), notice: 'Chapter was successfully updated.' }
         format.json { render :show, status: :ok, location: @chapter }
       else
         format.html { render :edit }

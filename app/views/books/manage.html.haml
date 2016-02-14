@@ -1,0 +1,33 @@
+.row
+  .col-sm-3
+    = render 'card', book: @book
+    = link_to edit_book_path(@book), class: 'btn btn-primary btn-block' do
+      %i.fa.fa-edit
+      Edit book info
+  .col-sm-9
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title Chapters
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Title
+            %th Pages
+            %th.text-right Actions
+        %tbody
+          - @book.chapters.each do |chapter|
+            %tr
+              %td= chapter.title
+              %td= chapter.pages.count
+              %td.text-right
+                .btn-group
+                  = link_to edit_chapter_path(chapter), class: 'btn btn-primary' do
+                    %i.fa.fa-edit
+                    Edit
+                  = link_to chapter_pages_path(chapter), class: 'btn btn-default' do
+                    Manage pages
+                .btn-group
+                  = link_to [:up, chapter], method: :patch, class: 'btn btn-default btn-sm' do
+                    %i.fa.fa-arrow-up
+                  = link_to [:down, chapter], method: :patch, class: 'btn btn-default btn-sm' do
+                    %i.fa.fa-arrow-down

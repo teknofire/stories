@@ -1,0 +1,4 @@
+- if can? :manage, @chapter
+  = render 'manage'
+- else
+  = render 'grid', pages: @pages
