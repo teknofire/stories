@@ -33,7 +33,7 @@ gem 'redcarpet', require: 'redcarpet'
 gem 'simple_form'
 gem "mini_magick"
 gem "refile", require: "refile/rails"
-gem "refile-s3"
+gem "refile-s3", require: "refile/s3"
 gem "refile-mini_magick"
 gem 'mixlib-shellout'
 gem 'nokogiri'
@@ -85,3 +85,8 @@ gem 'web-console', '~> 2.0', group: :development
 gem 'puma'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+
+group :development do
+  gem 'capistrano', '~> 3.1'
+  gem 'capistrano-rails', '~> 1.1'
+end
