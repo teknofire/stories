@@ -1,23 +1,20 @@
 - content_for :navbar do
-  %nav.navbar.navbar-default.navbar-static-top
+  %nav.navbar.navbar-inverse.navbar-static-top
     .container-fluid
       .navbar-header
         .navbar-brand.book-title
           #{book.title}
           \: #{@chapter.try(:title) || book.try(:chapters).try(:first).try(:title)}
 
-          - if can? :manage, book
+      %ul.nav.navbar-nav.navbar-right
+        - if can? :manage, book
+          %li
             = link_to edit_book_path(book), class: 'navbar-link' do
-              %i.fa.fa-gear
+              %i.fa.fa-edit
+              Edit book
 
+
+          %li
             = link_to book, method: :delete, data: { confirm: 'Are you sure?' }, class: 'navbar-link' do
               %i.fa.fa-trash
-      .navbar-right
-        %ul.nav.navbar-nav
-          %li.dropdown
-            = link_to book, data: { toggle: 'dropdown' }, class: 'dropdown-toggle' do
-              Chapters
-              %span.caret
-            %ul.dropdown-menu
-              - book.chapters.each do |chapter|
-                = active_link_to chapter, chapter, wrap_tag: 'li'
+              Delete book

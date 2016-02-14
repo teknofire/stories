@@ -1,9 +1,13 @@
-- if chapter.book.nil?
-  .alert.alert-info
-    %p This chapter has not been assigned to a book yet, please select a book.
-    %br/
-    = render 'choose_book_form'
-- cache chapter do
-  %h1= chapter.title
-  -# = render 'pages/list', pages: chapter.pages.order(sequence: :asc)
-  = render 'pages/grid', pages: chapter.pages.order(sequence: :asc)
+.row
+  .col-sm-3
+    = render 'chapters/menu_list', chapters: chapter.book.chapters, active_chapter: chapter
+  .col-sm-9.text-center
+    - if chapter.book.nil?
+      .alert.alert-info
+        %p This chapter has not been assigned to a book yet, please select a book.
+        %br/
+        = render 'choose_book_form'
+    - cache chapter do
+      %h1= chapter.title
+      -# = render 'pages/list', pages: chapter.pages.order(sequence: :asc)
+      = render 'pages/list', pages: chapter.pages.order(sequence: :asc)
