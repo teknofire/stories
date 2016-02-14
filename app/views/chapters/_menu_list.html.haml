@@ -1,15 +1,13 @@
 - unless chapters.nil?
   .panel.panel-default
     .panel-heading
-      %h1.panel-title Chapters
+      %h1.panel-title
+        %strong Chapters
 
     %div.list-group
       - chapters.each do |chapter|
-        -# %li.list-group-item{ class: active_chapter == chapter ? 'list-group-item-info' : '' }
-        = active_link_to chapter, chapter, class: 'list-group-item'
-        - if can? :manage, chapter
-          .btn-group{ style: 'position: absolute; top: 6px; right: 5px;'}
-            = link_to [:up, chapter], method: :patch, class: 'btn btn-default btn-sm' do
-              %i.fa.fa-arrow-up
-            = link_to [:down, chapter], method: :patch, class: 'btn btn-default btn-sm' do
-              %i.fa.fa-arrow-down
+        = active_link_to chapter, class: 'list-group-item', active: chapter == active_chapter do
+          %strong= chapter
+          %div
+            #{chapter.created_at.strftime('%B %e, %Y')}
+          -# = render 'reorder', chapter: chapter

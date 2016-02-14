@@ -1,12 +1,14 @@
 .row
   .col-sm-3
-    = render 'chapters/menu_list', chapters: chapter.book.chapters, active_chapter: chapter
-  .col-sm-9.text-center
     - if chapter.book.nil?
-      .alert.alert-info
-        %p This chapter has not been assigned to a book yet, please select a book.
-        %br/
-        = render 'choose_book_form'
+      .panel.panel-default
+        .panel-heading
+          %h1.panel-title This chapter has not been assigned to a book yet, please select a book.
+        .panel-body.text-center
+          = render 'choose_book_form'
+    - else
+      = render 'chapters/menu_list', chapters: chapter.book.chapters, active_chapter: chapter
+  .col-sm-9.text-center
     - cache chapter do
       %h1= chapter.title
       -# = render 'pages/list', pages: chapter.pages.order(sequence: :asc)
