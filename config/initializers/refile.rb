@@ -1,5 +1,5 @@
 # config/initializers/refile.rb
-if Rails.env.production? && Rails.appication.secrets.refile_s3_bucket
+if Rails.application.secrets.refile_s3_bucket
   aws = {
     access_key_id:  Rails.application.secrets.aws_client_id,
     secret_access_key:  Rails.application.secrets.aws_client_secret,
