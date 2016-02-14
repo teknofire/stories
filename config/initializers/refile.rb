@@ -1,9 +1,9 @@
 # config/initializers/refile.rb
-if Rails.env.production?
+if Rails.env.production? && Rails.appication.secrets.refile_s3_bucket
   aws = {
     access_key_id:  Rails.application.secrets.aws_client_id,
     secret_access_key:  Rails.application.secrets.aws_client_secret,
-    bucket: "s2-stories",
+    bucket: Rails.appication.secrets.refile_s3_bucket,
     region: 'us-west-2'
   }
   Refile.cache = Refile::S3.new(prefix: "cache", **aws)
