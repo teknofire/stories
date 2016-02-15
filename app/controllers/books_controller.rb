@@ -8,7 +8,7 @@ class BooksController < ApplicationController
   def index
     search = params[:q] || {}
     @q = Book.ransack(search.merge({ available: current_user || true }))
-    @q.sorts = 'title ASC' if @q.sorts.empty?
+    @q.sorts = 'updated_at DESC' if @q.sorts.empty?
     @books = @q.result(distinct: true)
   end
 
