@@ -21,7 +21,7 @@ class ProcessUploadJob < ActiveJob::Base
 
         if entries.include?('Storytelling') && has_stories?('Storytelling')
           import_story_chapters(upload, 'Storytelling')
-        elsif has_stories?('Storytelling')
+        elsif has_stories?('.')
           import_story_chapters(upload, '.')
         else
           import_images_as_chapter(upload, '.')
@@ -58,7 +58,7 @@ class ProcessUploadJob < ActiveJob::Base
     end
   end
 
-  def import_chapters(upload, path)
+  def import_story_chapters(upload, path)
     logger.info "Looking for story files in #{path}"
     Dir.chdir(path) do
       stories = Dir.glob('*.xml')
