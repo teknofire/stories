@@ -7,4 +7,3 @@ if Rails.application.secrets.redis_url
     config.redis = { url: Rails.application.secrets.redis_url, network_timeout: 5 }
   end
 end
-"redis://#{Rails.application.secrets.redis_host}:6379/12"

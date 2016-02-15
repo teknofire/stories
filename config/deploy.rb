@@ -50,6 +50,9 @@ namespace :deploy do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       execute :sudo, :service, 'puma', 'restart'
     end
+    on roles(:app), in: :groups, limit: 3, wait: 10 do
+      execute :sudo, :service, 'sidekiq', 'restart'
+    end
   end
 
 end
