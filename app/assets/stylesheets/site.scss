@@ -7,9 +7,11 @@
 .sub-navbar {
   margin-top: -21px;
 }
+
 .grid-sizer, .grid-item {
   width: 400px;
   height: 300px;
+  margin-bottom: 5px;
 }
 
 .grid a.thumbnail:hover {
@@ -24,6 +26,7 @@
   .grid-sizer, .grid-item {
     width: 330px;
     height: 250px;
+    margin-bottom: 5px;
   }
 }
 
