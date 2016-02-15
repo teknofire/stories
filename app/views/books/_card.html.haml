@@ -1,6 +1,6 @@
 .thumbnail
-  = image_tag attachment_url(book.pages.first, :image, :fill, 600, 200, format: "jpg")
-  .caption
+  = image_tag attachment_url(book.pages.first, :image, :fill, 400, 300, format: "jpg")
+  .caption.inline
     .pull-right
       Updated #{time_ago_in_words book.updated_at} ago
       - if can? :manage, book
