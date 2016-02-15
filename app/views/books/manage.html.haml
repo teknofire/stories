@@ -1,9 +1,17 @@
 .row
   .col-sm-3
     = render 'card', book: @book
-    = link_to edit_book_path(@book), class: 'btn btn-primary btn-block' do
-      %i.fa.fa-edit
-      Edit book info
+
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title title
+      .panel-body
+        -# = link_to new_book_chapter_path(@book), class: 'btn btn-success btn-block' do
+        -#   %i.fa.fa-plus
+        -#   Create new chapter
+        = link_to edit_book_path(@book), class: 'btn btn-primary btn-block' do
+          %i.fa.fa-edit
+          Edit book info
   .col-sm-9
     .panel.panel-default
       .panel-heading

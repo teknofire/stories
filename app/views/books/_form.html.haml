@@ -4,8 +4,13 @@
   = f.input :public
 
   .footer
-    = link_to manage_book_path(@book), class: 'btn btn-default' do
-      %i.fa.fa-arrow-left
-      Cancel
+    - if @book.new_record?
+      = link_to root_url, class: 'btn btn-default' do
+        %i.fa.fa-arrow-left
+        Cancel
+    - else
+      = link_to manage_book_path(@book), class: 'btn btn-default' do
+        %i.fa.fa-arrow-left
+        Cancel
     .pull-right
       = f.button :submit, class: 'btn btn-primary'

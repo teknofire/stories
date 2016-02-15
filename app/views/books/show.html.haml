@@ -1,3 +1,6 @@
 = render @book
 - if @book.chapters.any?
   = render @book.chapters.first
+- else
+  .alert.alert-warning.text-center
+    %h1 This book as no chapters

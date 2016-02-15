@@ -10,8 +10,11 @@
 
 .grid-sizer, .grid-item {
   width: 400px;
-  height: 300px;
   margin-bottom: 5px;
+}
+
+.grid-item .thumbnail {
+  height: 300px;  
 }
 
 .grid a.thumbnail:hover {

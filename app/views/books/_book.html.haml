@@ -1,14 +1,21 @@
-- content_for :navbar do
-  %nav.navbar.navbar-inverse.navbar-static-top
-    .container-fluid
-      .navbar-header
-        .navbar-brand.book-title
-          #{book.title}
-          \: #{@chapter.try(:title) || book.try(:chapters).try(:first).try(:title)}
+- if !book.new_record? || can?(:create, Book)
+  - content_for :navbar do
+    %nav.navbar.navbar-inverse.navbar-static-top
+      .container-fluid
+        - if !book.new_record?
+          .navbar-header
+            .navbar-brand.book-title
+              #{book.title}
+              \: #{@chapter.try(:title) || book.try(:chapters).try(:first).try(:title)}
 
-      %ul.nav.navbar-nav.navbar-right
-        - if can? :manage, book
-          %li
-            = link_to manage_book_path(book), class: 'navbar-link' do
-              %i.fa.fa-edit
-              Manage book
+        %ul.nav.navbar-nav.navbar-right
+          - if can? :create, Book
+            %li
+              = link_to new_book_path, class: 'navbar-link' do
+                %i.fa.fa-plus
+                Create new book
+          - if can? :manage, book
+            %li
+              = link_to manage_book_path(book), class: 'navbar-link' do
+                %i.fa.fa-edit
+                Manage book

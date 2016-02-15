@@ -1,4 +1,4 @@
-.thumbnail
+.thumbnail{ style: 'min-height: 300px;' }
   = image_tag attachment_url(book.chapters.first.try(:pages).try(:first), :image, :fill, 400, 300, format: "jpg")
   .caption.inline
     .pull-right
