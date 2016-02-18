@@ -85,6 +85,7 @@ gem 'web-console', '~> 2.0', group: :development
 gem 'puma'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'capistrano', '~> 3.1'
