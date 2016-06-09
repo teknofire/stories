@@ -1,7 +1,7 @@
 class UploadsController < ApplicationController
-  before_action :set_upload, only: [:show, :edit, :update, :destroy]
+  before_action :set_upload, only: [:show, :retry, :edit, :update, :destroy]
   authorize_resource
-  
+
   def index
     @uploads = user_uploads
     @upload = current_user.uploads.build
@@ -23,6 +23,17 @@ class UploadsController < ApplicationController
         @uploads = user_uploads
         format.html { render :index }
         format.json { render json: @upload.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def retry
+    respond_to do |format|
+      if @upload.processing_error?
+        @upload.queue_process
+        format.html { redirect_to @upload, notice: 'Upload was requeued' }
+      else
+        format.html { redirect_to @upload, notice: 'Unable to requeue upload' }
       end
     end
   end

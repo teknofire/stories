@@ -51,4 +51,18 @@ class UploadsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:upload)
     assert_response :success
   end
+
+  test "should not be able to retry upload" do
+    patch :retry, id: @upload.id
+
+    assert_match /Unable/, flash[:notice]
+    assert_redirected_to @upload
+  end
+
+  test "should be able to retry errored upload" do
+    patch :retry, id: uploads(:error)
+
+    assert_match /requeued/, flash[:notice]
+    assert_redirected_to uploads(:error)
+  end
 end

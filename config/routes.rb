@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :chapters do
     resources :pages
   end
-  resources :uploads
+  resources :uploads do
+    patch :retry, on: :member
+  end
   resources :books do
     get :manage, on: :member
     resources :chapters, shallow: true do

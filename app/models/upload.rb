@@ -13,6 +13,11 @@ class Upload < ActiveRecord::Base
 
   def queue_process
     return if file.nil?
+    update_attribute(:status, 'Queued')
     ProcessUploadJob.perform_later self
+  end
+
+  def processing_error?
+    status == 'Error'
   end
 end

@@ -5,9 +5,11 @@ one:
   file_size: 1
   file_content_type: MyString
   user: two
+  status: complete
 
-two:
+error:
   file_id: MyString2
   file_size: 1
   file_content_type: MyString
   user: two
+  status: Error
