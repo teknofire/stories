@@ -4,28 +4,26 @@ class ProcessUploadJob < ActiveJob::Base
   def perform(upload)
     upload.update_attribute(:status, 'Importing')
     Dir.mktmpdir("upload-#{upload.file_filename}-#{upload.id}") do |dir|
-      Dir.chdir(dir) do
-        file = upload.file.download
-        unzip = Mixlib::ShellOut.new("unzip #{file.path} -d . ")
-        unzip.run_command
+      file = upload.file.download
+      unzip = Mixlib::ShellOut.new("unzip #{file.path} -d #{dir} ")
+      unzip.run_command
 
-        if unzip.status.exitstatus == 0
-          logger.info "Unzipping #{upload.file_filename} successful"
-          logger.info unzip.stdout
-        else
-          logger.info "Unzipping #{upload.file_filename} successful"
-          logger.info unzip.stderr
-        end
+      if unzip.status.exitstatus == 0
+        logger.info "Unzipping #{upload.file_filename} successful"
+        logger.info unzip.stdout
+      else
+        logger.info "Error unzipping #{upload.file_filename}"
+        logger.info unzip.stderr
+      end
 
-        entries = Dir.entries('.')
+      entries = Dir.entries(dir)
 
-        if entries.include?('Storytelling') && has_stories?('Storytelling')
-          import_story_chapters(upload, 'Storytelling')
-        elsif has_stories?('.')
-          import_story_chapters(upload, '.')
-        else
-          import_images_as_chapter(upload, '.')
-        end
+      if entries.include?('Storytelling') && has_stories?('Storytelling')
+        import_story_chapters(upload, 'Storytelling')
+      elsif has_stories?(dir)
+        import_story_chapters(upload, dir)
+      else
+        import_images_as_chapter(upload, dir)
       end
     end
     upload.update_attribute(:status, 'Imported')
