@@ -17,6 +17,8 @@
       .panel-footer
         = link_to 'Back to uploads', uploads_path, class: 'btn btn-default btn-block'
         = link_to 'Delete', @upload, method: :delete, class: 'btn btn-danger btn-block', data: { confirm: 'Are you sure?' }
+        - if @upload.processing_error?
+          = link_to 'Retry', retry_upload_path(@upload), method: :patch, class: 'btn btn-warning btn-block'
   .col-sm-9
     .panel.panel-default
       .panel-heading
