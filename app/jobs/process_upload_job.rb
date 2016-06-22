@@ -5,11 +5,11 @@ class ProcessUploadJob < ActiveJob::Base
     upload.update_attribute(:status, 'Importing')
     Dir.mktmpdir("upload-#{upload.file_filename}-#{upload.id}") do |dir|
       file = upload.file.download
-      unzip = Mixlib::ShellOut.new("unzip #{file.path} -d #{dir} ")
+      unzip = Mixlib::ShellOut.new("unzip '#{file.path}' -d #{dir}")
       unzip.run_command
 
       if unzip.status.exitstatus == 0
-        logger.info "Unzipping #{upload.file_filename} successful"
+        logger.info "Unzipped #{upload.file_filename} successful"
         logger.info unzip.stdout
       else
         logger.info "Error unzipping #{upload.file_filename}"
