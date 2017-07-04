@@ -1,7 +1,7 @@
 class Chapter < ActiveRecord::Base
   belongs_to :book, touch: true
   belongs_to :upload, touch: true
-  has_many :pages, dependent: :destroy
+  has_many :pages, -> { order(sequence: :asc) }, dependent: :destroy
 
   attachment :story
 

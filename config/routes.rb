@@ -14,7 +14,14 @@ Rails.application.routes.draw do
         patch :up
         patch :down
       end
-      resources :pages
+      resources :pages do
+        member do
+          patch :up
+          patch :down
+          patch :top
+          patch :bottom
+        end
+      end
     end
   end
 

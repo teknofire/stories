@@ -10,8 +10,31 @@
           %i.fa.fa-arrow-left
           Back to book manager
   .col-sm-9
-    .grid.pages
-      .grid-sizer
-      - @pages.each do |page|
-        = link_to edit_page_path(page), class: 'thumbnail grid-item' do
-          = render 'card', page: page
+    %table.table.table-striped
+      %thead
+        %tr
+          %th IMG
+          %th Content
+          %th Order
+      %tbody
+        - @pages.each do |page|
+          %tr
+            %td{ style: 'width:1%;' }
+              = link_to edit_page_path(page) do
+                = image_tag attachment_url(page, :image, :fill, 100, 100, format: "jpg")
+            %td
+              = page.image_filename
+              %br/
+              = page.content
+            %td
+              .btn-group
+                - unless page.first?
+                  = link_to [:top, page], method: :patch, class: 'btn btn-default' do
+                    %i.fa.fa-angle-double-up
+                  = link_to [:up, page], method: :patch, class: 'btn btn-default' do
+                    %i.fa.fa-angle-up
+                - unless page.last?
+                  = link_to [:down, page], method: :patch, class: 'btn btn-default' do
+                    %i.fa.fa-angle-down
+                  = link_to [:bottom, page], method: :patch, class: 'btn btn-default' do
+                    %i.fa.fa-angle-double-down

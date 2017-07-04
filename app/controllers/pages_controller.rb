@@ -26,6 +26,29 @@ class PagesController < ApplicationController
     end
   end
 
+  def up
+    @page.move_higher
+
+    redirect_to chapter_pages_path(@page.chapter)
+  end
+
+  def down
+    @page.move_lower
+
+    redirect_to chapter_pages_path(@page.chapter)
+  end
+  def top
+    @page.move_to_top
+
+    redirect_to chapter_pages_path(@page.chapter)
+  end
+
+  def bottom
+    @page.move_to_bottom
+
+    redirect_to chapter_pages_path(@page.chapter)
+  end
+
   protected
 
   def set_chapter
