@@ -44,7 +44,7 @@ class ProcessUploadJob < ActiveJob::Base
 
     count = 0
     Dir.chdir(path) do
-      Dir.glob('*.png').each do |image|
+      Dir.glob(['*.png', '*.jpg'], File::FNM_CASEFOLD).each do |image|
         page = chapter.pages.build
         page.image = File.open(image, 'rb')
         page.image.read
