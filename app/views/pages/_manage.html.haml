@@ -15,7 +15,7 @@
         %tr
           %th IMG
           %th Content
-          %th Order
+          %th.text-right Actions
       %tbody
         - @pages.each do |page|
           %tr
@@ -26,7 +26,7 @@
               = page.image_filename
               %br/
               = page.content
-            %td
+            %td.text-right
               .btn-group
                 - unless page.first?
                   = link_to [:top, page], method: :patch, class: 'btn btn-default' do
@@ -38,3 +38,5 @@
                     %i.fa.fa-angle-down
                   = link_to [:bottom, page], method: :patch, class: 'btn btn-default' do
                     %i.fa.fa-angle-double-down
+              = link_to edit_page_path(page), class: 'btn btn-primary' do
+                Edit
