@@ -40,3 +40,5 @@
                     %i.fa.fa-angle-double-down
               = link_to edit_page_path(page), class: 'btn btn-primary' do
                 Edit
+              = link_to page_path(page), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
+                Delete

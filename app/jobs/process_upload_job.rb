@@ -48,7 +48,7 @@ class ProcessUploadJob < ActiveJob::Base
         page = chapter.pages.build
         page.image = File.open(image, 'rb')
         page.image.read
-        page.sequence = count
+        # page.sequence = count
         page.save
 
         count += 1

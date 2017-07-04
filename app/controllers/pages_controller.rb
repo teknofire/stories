@@ -26,6 +26,14 @@ class PagesController < ApplicationController
     end
   end
 
+  def destroy
+    @page.destroy
+    respond_to do |format|
+      format.html { redirect_to chapter_pages_path(@page.chapter), notice: "Page \"#{@page.image_filename}\" deleted." }
+      format.json { head :no_content }
+    end
+  end
+
   def up
     @page.move_higher
 
